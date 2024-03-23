@@ -49,54 +49,96 @@
       <div class="signup-header">
         <h2>Become a member of the Digital Education Bridge e.V.</h2>
         <p>Join us to get involved in projects, to follow our development and to support us in scaling DEB.</p>
-        <p>Currently the association does not require membership fees.</p>
+        <p>Currently being part of the association does not require membership fees.</p>
       </div>
 
 
       <!-- FORM BEGINNING -->
       <div class="container p-4" style="background-color: #f0f0f0">
         <div class="row justify-content-center">
-          <form class="col-md-12" action="https://script.google.com/macros/s/AKfycbxlPwmxTbnmoDdrY89vr7h709dk_-tRI3FB_oybrT06Fe8Plj76EoAUD4oYCuD9_v3uxw/exec" method="post">
+          <form class="col-md-12 form" id="my-form" method="POST" action="https://script.google.com/macros/s/AKfycbyBH6F_S1F3noeCDavG28O5NVquK3eQo0DGcR-AkCuuMdEKPX-2t1Zuds3QFYbRajp5Ag/exec">
 
-            <div class="Form">
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <input type="text" name="First_name" required="required" placeholder="First name" class="form-control mb-3">
-                </div>
-                <div class="form-group col-md-6">
-                  <input type="text" name="Last_name" required="required" placeholder="Last name" class="form-control mb-3">
-                </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <input type="text" name="First name" required="required" placeholder="First name" class="form-control mb-1">
+              </div>
+              <div class="form-group col-md-6">
+                <input type="text" name="Last name" required="required" placeholder="Last name" class="form-control mb-1">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <input type="text" name="Street & house number" required="required" placeholder="Street & house number" class="form-control mb-1">
+              </div>
+              <div class="form-group col-md-6">
+                <input type="text" name="Postal code" required="required" placeholder="Postal code" class="form-control mb-1">
+              </div>
+            </div>
+            <div class="form-row">
+
+              <div class="form-group col-md-6">
+                <input type="text" name="City" required="required" placeholder="City" class="form-control mb-1">
               </div>
 
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <input type="text" name="Street_and_street_number" required="required" placeholder="Street & street number" class="form-control mb-3">
-                </div>
-                <div class="form-group col-md-6">
-                  <input type="text" name="Postal_code" required="required" placeholder="Postal code" class="form-control mb-3">
-                </div>
+              <div class="form-group col-md-6">
+                <input type="text" name="Country" required="required" placeholder="Country" class="form-control mb-1">
               </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <input type="text" name="City" required="required" placeholder="City" class="form-control mb-3">
+
+            </div>
+
+            <div class="form-group">
+              <input type="email" name="Email" required="required" placeholder="Email address" class="form-control mb-1">
+            </div>
+
+            <div class="form-group">
+              <textarea name="Reason to join" required="required" placeholder="Write more than 100 characters" class="form-control mb-2" rows="3"></textarea>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <div class="message">
+                <div class="button-container">
+                  <button type="submit" class="btn btn-green submit-button">Submit</button>
                 </div>
-                <div class="form-group col-md-6">
-                  <input type="text" name="Country" required="required" placeholder="Country" class="form-control mb-3">
-                </div>
-              </div>
-              <div class="form-group col-md-12">
-                <input type="email" name="Email" required="required" placeholder="Email address" class="form-control mb-3">
-              </div>
-              <div class="form-group col-md-12">
-                <textarea name="Your_reason_to_join" required="required" placeholder="Write more than 100 characters" class="form-control mb-3" rows="3"></textarea>
-              </div>
-              <div class="col-md-12">
-                <input type="submit" value="Submit" class="btn btn-primary col-md-12 submit-button">
               </div>
             </div>
           </form>
         </div>
       </div>
+
+      <div class="container p-4" style="background-color: #f0f0f0">
+        <div class="row justify-content-center">
+          <div class="col-md-12">
+            <div class="messagesuccess" id="success" style="display: none;">
+              Your application has been submitted. We'll be in touch shortly.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        window.addEventListener("load", function() {
+          const form = document.getElementById('my-form');
+          const successMessage = document.getElementById('success');
+
+          form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            const data = new FormData(form);
+            const action = e.target.action;
+
+            fetch(action, {
+              method: 'POST',
+              body: data,
+            })
+            .then(() => {
+              successMessage.style.display = "block";
+            })
+            .catch (() => {
+              console.error("There was an error submitting the form.");
+            });
+          });
+        });
+      </script>
       <!-- FORM END -->
 
       <div class="donate-header" style="margin-top: 20px;">

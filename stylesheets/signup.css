@@ -68,8 +68,6 @@
   color: rgb(171, 169, 169);
 }
 
-
-
 .donate-content {
   height: 200px;
 }
@@ -83,6 +81,9 @@
   color: #fff;
   background-color: rgb(18, 79, 18); /* Green color */
   border-color: #4d845a; /* Green color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn-green:hover {
@@ -93,8 +94,32 @@
 
 .submit-button {
   background-color: rgb(18, 79, 18);
+  width: 100%;
 }
 
 .placeholder {
   font-color: rgb(206, 144, 144);
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.message {
+  width: 100%;
+  position: relative;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.messagesuccess {
+  font-size: 17px;
+  color: green;
+  animation: buttons .3s linear;
+  display: none;
+  text-align: center;
+  justify-content: center;
 }
